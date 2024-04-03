@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         //test();
@@ -11,9 +10,9 @@ public class Main {
     }
     private static void genereProduit(){
         ArrayList<Produit> lesProduits = new ArrayList<>();
-        // génération de boissons
         float fruits_leg,fibres, proteines, energie, sucreSimples, acideGrasSatures, sodium;
-        for (int i = 0; i < 1000000;i++){
+        int nbProduitA = 0,nbProduitB = 0, nbProduitsC = 0, nbProduitD = 0, nbProduitE = 0;
+        for(int i = 0; i < 1000000;i++){
             fruits_leg = (float) (Math.random()*(0+90));
             fibres = (float) (Math.random()*(0+5));
             proteines = (float) (Math.random()*(0+8));
@@ -24,10 +23,28 @@ public class Main {
             lesProduits.add(new Produit("Boisson"+i,new PointC(fruits_leg,fibres,proteines),new PointA(energie, sucreSimples,acideGrasSatures,sodium),Type.Boisson));
         }
         for (Produit produitCourant : lesProduits){
+            switch (produitCourant.getClasse()){
+                case A:
+                    nbProduitA++;
+                break;
+                case B:
+                    nbProduitB++;
+                    break;
+                case C:
+                    nbProduitsC++;
+                    break;
+                case D:
+                    nbProduitD++;
+                    break;
+                case E:
+                    nbProduitE++;
+                    break;
+            }
             if (produitCourant.getClasse().ordinal() < Classe.C.ordinal()){
                 System.out.println("\n"+produitCourant);
             }
         }
+        System.out.println("\n NbProduit A : "+nbProduitA+"\n NbProduit B : "+nbProduitB+"\n NbProduitC : "+nbProduitsC+"\n nbProduitD : "+nbProduitD+" \n nbProduitE : "+nbProduitE);
         lesProduits.clear();
     }
 }

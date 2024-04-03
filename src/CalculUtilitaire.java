@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class CalculUtilitaire {
     public static short calculEnergieAutreMG(float energie){
         if (energie <= 335 ){
